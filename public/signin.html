@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: fit-content;
+            margin: 30px auto;
+            padding: 10px 7px;
+            border: 1px solid;
+            text-align: center;
+        }
+
+        input,
+        button {
+            display: block;
+            margin: 8px auto;
+            width: 300px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Sign in</h2>
+        <input type="text" placeholder="Email or Mobile number">
+        <input type="password" placeholder="Password">
+        <button>Sign in</button>
+        <button id="signInGoogle">Sign in with Google</button>
+    </div>
+
+    <script type="module">
+        // Import necessary functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+
+
+
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAvYh8C3NNLj60YLvFZ3q75EYfqWA-Id8o",
+            authDomain: "secondfirebase-147d7.firebaseapp.com",
+            projectId: "secondfirebase-147d7",
+            storageBucket: "secondfirebase-147d7.appspot.com",
+            messagingSenderId: "332605761156",
+            appId: "1:332605761156:web:c615c1581ddb2e249a84d1"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const provider = new GoogleAuthProvider();
+        const auth = getAuth();
+
+        document.getElementById('signInGoogle').addEventListener('click', ()=>{
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    console.log(result);
+
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
